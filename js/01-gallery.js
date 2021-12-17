@@ -36,16 +36,22 @@ function onImgClick(event) {
     });
     console.log(originalImg.original);
 
-    const instance = basicLightbox.create(`
+    const modal = basicLightbox.create(`
     <img src="${originalImg.original}" width="800" height="600">
 `)
 
-instance.show()
+    modal.show()
+    document.addEventListener('keydown', modalClose);
+    function modalClose(e) {
+      if (e.key === "Escape") {
+        modal.close();
+      }
+      // console.log(e.key);
+      };
 }
 
-const previewList = [];
-previewList.src = galleryItems.preview;
-previewList.alt = galleryItems.description;
+
+
 
 
 
